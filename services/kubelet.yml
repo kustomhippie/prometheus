@@ -1,0 +1,63 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+
+metadata:
+  name: kube-kubelet
+
+spec:
+  endpoints:
+    - port: https
+      scheme: https
+      honorLabels: true
+      bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+
+      tlsConfig:
+        caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+        insecureSkipVerify: true
+
+      relabelings:
+        - sourceLabels:
+            - __metrics_path__
+          targetLabel: metrics_path
+
+    - port: https
+      scheme: https
+      path: /metrics/cadvisor
+      honorLabels: true
+      bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+
+      tlsConfig:
+        caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+        insecureSkipVerify: true
+
+      relabelings:
+        - sourceLabels:
+            - __metrics_path__
+          targetLabel: metrics_path
+
+    - port: https
+      scheme: https
+      path: /metrics/probes
+      honorLabels: true
+      bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+
+      tlsConfig:
+        caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+        insecureSkipVerify: true
+
+      relabelings:
+        - sourceLabels:
+            - __metrics_path__
+          targetLabel: metrics_path
+
+  namespaceSelector:
+    matchNames:
+      - kube-system
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kubernetes
+      app.kubernetes.io/component: kubelet
+
+...

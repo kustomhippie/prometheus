@@ -1,0 +1,53 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+
+metadata:
+  name: server
+
+spec:
+  version: v2.27.0
+  replicas: 2
+  serviceAccountName: prometheus-server
+
+  retention: 2w
+  enableAdminAPI: true
+  portName: http
+
+  storage:
+    volumeClaimTemplate:
+      metadata:
+        name: data
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 10Gi
+
+  podMetadata:
+    labels:
+      app.kubernetes.io/name: prometheus
+      app.kubernetes.io/component: server
+
+  securityContext:
+    fsGroup: 2000
+    runAsNonRoot: true
+    runAsUser: 1000
+
+  serviceMonitorNamespaceSelector: {}
+  serviceMonitorSelector: {}
+
+  probeNamespaceSelector: {}
+  probeSelector: {}
+
+  podMonitorNamespaceSelector: {}
+  podMonitorSelector: {}
+
+  ruleNamespaceSelector: {}
+  ruleSelector:
+    matchLabels:
+      prometheus: server
+      role: rules
+
+...
