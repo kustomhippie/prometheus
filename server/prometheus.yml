@@ -7,7 +7,7 @@ metadata:
 
 spec:
   version: v2.27.0
-  replicas: 2
+  replicas: 1
   serviceAccountName: prometheus-server
 
   retention: 2w
