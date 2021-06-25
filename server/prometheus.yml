@@ -13,6 +13,15 @@ spec:
   retention: 2w
   enableAdminAPI: true
   portName: http
+  retentionSize: 45GB
+
+  resources:
+    limits:
+      cpu: 2000m
+      memory: 2500Mi
+    requests:
+      cpu: 1000m
+      memory: 2500Mi
 
   storage:
     volumeClaimTemplate:
