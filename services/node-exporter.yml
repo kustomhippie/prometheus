@@ -8,7 +8,17 @@ metadata:
 spec:
   endpoints:
     - port: http
+      scheme: http
+      interval: 15s
       bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+
+      relabelings:
+        - action: replace
+          regex: (.*)
+          replacement: $1
+          sourceLabels:
+            - __meta_kubernetes_pod_node_name
+          targetLabel: instance
 
   namespaceSelector:
     matchNames:
