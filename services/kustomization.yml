@@ -9,5 +9,6 @@ resources:
   - scheduler.yml
   - kubelet.yml
   - dns.yml
+  - node-exporter.yml
 
 ...

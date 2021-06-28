@@ -20,3 +20,14 @@ spec:
       app.kubernetes.io/component: etcd
 
 ...
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+
+metadata:
+  name: kube-etcd
+
+spec:
+  groups: []
+
+...
