@@ -64,6 +64,9 @@ kind: PrometheusRule
 
 metadata:
   name: kube-controller
+  labels:
+    prometheus: server
+    role: rules
 
 spec:
   groups: []

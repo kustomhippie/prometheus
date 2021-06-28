@@ -107,6 +107,9 @@ kind: PrometheusRule
 
 metadata:
   name: kube-kubelet
+  labels:
+    prometheus: server
+    role: rules
 
 spec:
   groups:

@@ -83,6 +83,9 @@ kind: PrometheusRule
 
 metadata:
   name: kube-apiserver
+  labels:
+    prometheus: server
+    role: rules
 
 spec:
   groups:

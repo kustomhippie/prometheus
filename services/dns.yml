@@ -25,6 +25,9 @@ kind: PrometheusRule
 
 metadata:
   name: kube-dns
+  labels:
+    prometheus: server
+    role: rules
 
 spec:
   groups: []

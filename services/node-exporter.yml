@@ -36,6 +36,9 @@ kind: PrometheusRule
 
 metadata:
   name: node-exporter
+  labels:
+    prometheus: server
+    role: rules
 
 spec:
   groups:

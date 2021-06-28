@@ -26,6 +26,9 @@ kind: PrometheusRule
 
 metadata:
   name: kube-etcd
+  labels:
+    prometheus: server
+    role: rules
 
 spec:
   groups: []
