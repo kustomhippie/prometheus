@@ -1,0 +1,28 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+
+metadata:
+  name: weave-net
+  labels:
+    app.kubernetes.io/name: weave
+    app.kubernetes.io/part-of: prometheus
+
+spec:
+  endpoints:
+    - port: metrics
+      scheme: http
+      interval: 60s
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: weave
+      app.kubernetes.io/part-of: prometheus
+
+  namespaceSelector:
+    matchNames:
+      - kube-system
+
+  jobLabel: app.kubernetes.io/name
+
+...
