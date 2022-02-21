@@ -6,7 +6,7 @@ metadata:
   name: server
 
 spec:
-  version: v2.27.0
+  version: v2.33.3
   replicas: 1
   serviceAccountName: prometheus-server
 
