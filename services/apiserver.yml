@@ -95,7 +95,7 @@ metadata:
 
 spec:
   groups:
-    - name: kube-apiserver-general.rules
+    - name: kube-apiserver-general
       rules:
         - expr: |
             (
@@ -436,7 +436,7 @@ spec:
             quantile: "0.5"
           record: cluster_quantile:apiserver_request_duration_seconds:histogram_quantile
 
-    - name: kube-apiserver-availability.rules
+    - name: kube-apiserver-availability
       interval: 3m
       rules:
         - expr: |

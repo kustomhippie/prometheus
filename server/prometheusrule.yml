@@ -3,20 +3,6 @@ apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 
 metadata:
-  name: prometheus-server
-  labels:
-    prometheus: server
-    role: rules
-
-spec:
-  groups: []
-
-...
----
-apiVersion: monitoring.coreos.com/v1
-kind: PrometheusRule
-
-metadata:
   name: kubernetes-general
   labels:
     prometheus: server
@@ -24,7 +10,7 @@ metadata:
 
 spec:
   groups:
-    - name: kubernetes-general.rules
+    - name: kubernetes-general
       rules:
         - expr: |
             sum by (cluster, namespace, pod, container) (
@@ -152,7 +138,7 @@ metadata:
 
 spec:
   groups:
-    - name: kubernetes-node.rules
+    - name: kubernetes-node
       rules:
         - expr: |
             topk by(namespace, pod) (1,
