@@ -103,7 +103,7 @@ spec:
             workload_type: statefulset
           record: namespace_workload_pod:kube_pod_owner:relabel
 
-    - name: kubernetes-recording.rules
+    - name: kubernetes-recording
       rules:
         - expr: sum(rate(node_cpu_seconds_total{mode!="idle",mode!="iowait",mode!="steal"}[3m])) BY (instance)
           record: instance:node_cpu:rate:sum
@@ -118,7 +118,7 @@ spec:
         - expr: cluster:node_cpu_seconds_total:rate5m / count(sum(node_cpu_seconds_total) BY (instance, cpu))
           record: cluster:node_cpu:ratio
 
-    - name: kubernetes-up.rules
+    - name: kubernetes-up
       rules:
         - expr: count without(instance, pod, node) (up == 1)
           record: count:up1
