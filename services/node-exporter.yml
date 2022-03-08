@@ -60,14 +60,6 @@ spec:
           annotations:
             summary: "Host inodes will fill in 24 hours on {{ $labels.instance }}"
             description: "Filesystem is predicted to run out of inodes within the next 24 hours at current write rate"
-        # - alert: HostOomKillDetected
-        #   expr: increase(node_vmstat_oom_kill[1m]) > 0
-        #   for: 0m
-        #   labels:
-        #     severity: warning
-        #   annotations:
-        #     summary: "Host OOM kill detected on {{ $labels.instance }}"
-        #     description: "OOM kill detected"
 
     - name: node-exporter
       rules:
