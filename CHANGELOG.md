@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.0](https://github.com/kustomhippie/prometheus/compare/v1.0.0...v2.0.0) (2023-07-17)
+
+
+### Features
+
+* **major:** update actionhippie/kustomize action to v2 ([3e6e6ad](https://github.com/kustomhippie/prometheus/commit/3e6e6ad37eb8027cdb9fe7f33d36c4e4ad44f034))
+
 ## 1.0.0 (2023-06-05)
 
 
